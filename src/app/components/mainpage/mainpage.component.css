@@ -1,0 +1,53 @@
+.prof{
+  padding:1.2em;
+  font-size: 1.6em;
+  font-weight: 500;
+  background-color: rgb(54, 54, 54);
+  color: rgb(238, 227, 181);
+  border: 1px solid #000;
+}
+#p-head{
+  color: #fff;
+}
+.row .prof .p-info{
+  background-color: rgb(226, 223, 223);
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 1em;
+  font-size: 1rem;
+  color: #000;
+}
+.p-photo{
+  background-color: chocolate;
+  border-radius: 5px;
+  color: #fff;
+  padding: 1em;
+}
+button:hover{
+  background-color: rgba(0, 0, 0, 0.904);
+}
+button{
+  margin: 0.5em;
+  text-decoration: solid;
+  color: rgb(238, 227, 181);
+  background-color: #000;
+  padding: 0.4em;
+  border-radius: 0.5em;
+}
+form{
+  padding:1.5em;
+}
+.warn{
+  color:#ff0000;
+}
+label{
+  font-size: 2em;
+  font-weight: 100;
+}
+.active{
+  color: rgb(4, 62, 255);
+}
+.material-symbols-outlined:hover{
+  color: rgb(4, 62, 255);
+  cursor:pointer;
+}

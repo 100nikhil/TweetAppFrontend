@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col-md-6 mb-3" *ngFor="let t of allTweets">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-text">
+            {{t.tweet}}
+          </div>
+        </div>
+        <div class="card-footer" style="font-size:smaller">
+          Posted: {{t.created[0]}}-{{t.created[1]}}-{{t.created[2]}} | {{t.created[3]}}:{{t.created[4]}}:{{t.created[5]}}
+          <span class="material-symbols-outlined" [ngClass]="{'active':t.like}">
+            thumb_up_off
+          </span>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

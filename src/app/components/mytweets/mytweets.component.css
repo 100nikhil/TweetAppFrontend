@@ -1,0 +1,14 @@
+.active{
+  color: rgb(4, 62, 255);
+}
+.rem{
+  margin-left: 1em;
+  color: rgb(255,0,0);
+}
+.icon:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.icon:active{
+  transform: scale(0.9);
+}

@@ -1,0 +1,143 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="top">
+      <h1>SignUp</h1>
+    </div>
+  </div>
+  <div class="row f">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <form class="form-group" (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+        <div class="mb-2">
+          <label for="email" class="form-label">Username</label>
+          <input
+            type="email"
+            class="form-control"
+            email
+            name="email"
+            ngModel
+            #email="ngModel"
+            id="email"
+            placeholder="username ex: abc@gmail.com"
+            required
+          />
+        </div>
+        <div class="warn" *ngIf="email.touched && email.errors?.['required']">
+          Email is required.
+        </div>
+        <div class="warn" *ngIf="email.dirty && !email.errors?.['valid']">
+          Please enter a valid email
+        </div>
+        <div class="mb-2">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            minlength="8"
+            name="password"
+            class="form-control"
+            ngModel
+            #password="ngModel"
+            id="password"
+            placeholder="password"
+            required
+          />
+        </div>
+        <div
+          class="warn"
+          *ngIf="password.touched && password.errors?.['required']"
+        >
+          Password is required.
+        </div>
+        <div
+          class="warn"
+          *ngIf="password.dirty && password.errors?.['minlength']"
+        >
+          Password must be at least 8 characters long.
+        </div>
+        <div class="mb-2">
+          <label for="firstname" class="form-label">Firstname</label>
+          <input
+            type="text"
+            minlength="2"
+            name="firstname"
+            class="form-control"
+            ngModel
+            #firstname="ngModel"
+            id="firstname"
+            placeholder="firstname"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <label for="lastname" class="form-label">Lastname</label>
+          <input
+            type="text"
+            minlength="2"
+            name="lastname"
+            class="form-control"
+            ngModel
+            #lastname="ngModel"
+            id="lastname"
+            placeholder="lastname"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <label for="dob" class="form-label">Date Of Birth</label>
+          <input
+            type="date"
+            minlength="2"
+            name="dob"
+            class="form-control"
+            ngModel
+            #dob="ngModel"
+            id="dob"
+            placeholder="dob"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Gender</label><br>
+          <input
+            type="radio"
+            name="gender"
+            value="Male"
+            ngModel
+            #gender="ngModel"
+            id="gender1"
+            required
+          />
+          <label for="gender1" class="form-check-label m-1">Male</label>
+          <span class="material-symbols-outlined">
+            male
+          </span>
+          <br>
+          <input
+            type="radio"
+            name="gender"
+            value="Female"
+            ngModel
+            #gender="ngModel"
+            id="gender2"
+            required
+          />
+          <label for="gender2" class="form-check-label m-1">Female</label>
+          <span class="material-symbols-outlined">
+            female
+          </span>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="!signUpForm.touched || signUpForm.invalid || signUpForm.pristine"
+        >
+          SignUp
+        </button>
+        <a routerLink="/login">Existing User ? Go to Login</a>
+      </form>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>
+
+

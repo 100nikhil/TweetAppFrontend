@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 prof">
+      <div id="p-head">
+        Profile
+      </div>
+      <div class="p-info">
+        <div class="p-photo">
+          {{cuser.firstName|uppercase}}
+        </div>
+        <div>
+          Name   : {{cuser.firstName|uppercase}} {{cuser.lastName|uppercase}}<br>
+          Gender : {{cuser.gender|uppercase}}<br>
+          email  : {{cuser.email}}<br>
+          D.O.B. : {{cuser.dob}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row" style="padding:1.4em; background-color: azure;">
+        <div class="col-md-3" *ngFor="let u of allUsers;">
+          <div class="p-photo mb-1">{{u.firstName|uppercase}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <form class="form-group" (ngSubmit)="onSubmit()" #tf="ngForm">
+            <label for="tweet" class="form-label">Tweet</label>
+            <textarea
+              type="textarea"
+              class="form-control mb-3"
+              name="tweet"
+              ngModel
+              #tweet="ngModel"
+              id="tweet"
+              placeholder="Tell something to people..."
+              minlength="10"
+              required
+            >
+            </textarea>
+            <div class="warn" *ngIf="tweet.touched && tweet.errors?.['required']">
+              Tweet is required!
+            </div>
+            <div class="warn" *ngIf="tweet.dirty && tweet.errors?.['minlength']">
+              Enter minimum 10 characters!
+            </div>
+            <button
+              type="submit"
+              [disabled]="!tf.touched || tf.invalid"
+            >
+              Post
+            </button>
+          </form>
+        </div>
+        <hr/>
+      </div>
+      <div class="row">
+          <div class="col-md-6 mb-3" *ngFor="let t of allTweets">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-text">
+                  {{t.tweet|shortText}}
+                </div>
+              </div>
+              <div class="card-footer" style="font-size:smaller">
+                Posted: {{t.created[0]}}-{{t.created[1]}}-{{t.created[2]}}
+                <span class="material-symbols-outlined" [ngClass]="{'active':t.like}" (click)="toggleTweet($event, t.tid)">
+                  thumb_up_off
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button (click)="getCurrent()">Current user</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

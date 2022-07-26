@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="top">
+      <h1>Tweet App</h1>
+    </div>
+  </div>
+  <div class="row f">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <form class="form-group" (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Username</label>
+          <input
+            type="email"
+            class="form-control"
+            email
+            name="email"
+            ngModel
+            #email="ngModel"
+            id="email"
+            placeholder="username ex: abc@gmail.com"
+            required
+          />
+        </div>
+        <div class="warn" *ngIf="email.touched && email.errors?.['required']">
+          Email is required.
+        </div>
+        <div class="warn" *ngIf="email.dirty && !email.errors?.['valid']">
+          Please enter a valid email
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            minlength="8"
+            name="password"
+            class="form-control"
+            ngModel
+            #password="ngModel"
+            id="password"
+            placeholder="password"
+            required
+          />
+        </div>
+        <div
+          class="warn"
+          *ngIf="password.touched && password.errors?.['required']"
+        >
+          Password is required.
+        </div>
+        <div
+          class="warn"
+          *ngIf="password.dirty && password.errors?.['minlength']"
+        >
+          Password must be at least 8 characters long.
+        </div>
+        <button
+          type="submit"
+          [disabled]="!f.touched || f.invalid || f.pristine"
+        >
+          Login
+        </button>
+        <a routerLink="/register">Dont't have account? Sign up!</a>
+      </form>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
