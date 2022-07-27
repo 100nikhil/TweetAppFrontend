@@ -25,35 +25,50 @@
         <div class="warn" *ngIf="email.touched && email.errors?.['required']">
           Email is required.
         </div>
-        <div class="warn" *ngIf="email.dirty && !email.errors?.['valid']">
+        <div class="warn" *ngIf="email.dirty && !email.valid">
           Please enter a valid email
         </div>
         <div class="mb-2">
-          <label for="password" class="form-label">Password</label>
+          <label for="pass" class="form-label">Password</label>
           <input
             type="password"
             minlength="8"
-            name="password"
+            name="pass"
             class="form-control"
-            ngModel
-            #password="ngModel"
-            id="password"
-            placeholder="password"
+            [(ngModel)]="mypass"
+            #pass="ngModel"
+            id="pass"
+            placeholder="pass"
             required
           />
         </div>
         <div
           class="warn"
-          *ngIf="password.touched && password.errors?.['required']"
+          *ngIf="pass.touched && pass.errors?.['required']"
         >
           Password is required.
         </div>
         <div
           class="warn"
-          *ngIf="password.dirty && password.errors?.['minlength']"
+          *ngIf="pass.dirty && pass.errors?.['minlength']"
         >
           Password must be at least 8 characters long.
         </div>
+        <div class="mb-2">
+          <label for="cpass" class="form-label">Confirm Password</label>
+          <input
+            type="password"
+            minlength="8"
+            name="cpass"
+            class="form-control"
+            [(ngModel)]="cpassword"
+            #cpass="ngModel"
+            id="cpass"
+            placeholder="confirm password"
+            required
+          />
+        </div>
+        <div class="warn" *ngIf="cpass.dirty && mypass !== cpassword">Password do not match!</div>
         <div class="mb-2">
           <label for="firstname" class="form-label">Firstname</label>
           <input

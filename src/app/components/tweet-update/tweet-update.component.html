@@ -1,1 +1,39 @@
-<p>tweet-update works!</p>
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+      <form class="form-group" (ngSubmit)="updateTweet()" #tuf="ngForm">
+        <label for="tweet" class="form-label">Update Tweet</label>
+        <textarea
+          type="textarea"
+          class="form-control mb-3"
+          name="tweet"
+          [(ngModel)]="currentTweet"
+          #tweet="ngModel"
+          id="tweet"
+          placeholder="Tell something to people..."
+          minlength="10"
+          required
+        >
+        </textarea>
+        <div class="warn" *ngIf="tweet.touched && tweet.errors?.['required']">
+          Tweet is required!
+        </div>
+        <div class="warn" *ngIf="tweet.dirty && tweet.errors?.['minlength']">
+          Enter minimum 10 characters!
+        </div>
+        <button
+          type="submit"
+          [disabled]="!tuf.dirty || !tuf.valid"
+        >
+          Update
+        </button>
+      </form>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+</div>

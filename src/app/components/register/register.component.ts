@@ -13,6 +13,9 @@ export class RegisterComponent implements OnInit {
   @ViewChild('signUpForm') signUpForm?: NgForm;
   enteredUser:User;
 
+  cpassword:string="";
+  mypass:string="";
+
   constructor(private ls: LoginServiceService) { 
     this.enteredUser = {
       id:0,
@@ -32,7 +35,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.signUpForm?.value);
     if(this.signUpForm){
       this.enteredUser.email = this.signUpForm.value.email;
-      this.enteredUser.password = this.signUpForm.value.password;
+      this.enteredUser.password = this.signUpForm.value.pass;
       this.enteredUser.firstName = this.signUpForm.value.firstname;
       this.enteredUser.lastName = this.signUpForm.value.lastname;
       this.enteredUser.gender = this.signUpForm.value.gender;

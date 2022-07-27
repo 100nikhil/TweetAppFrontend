@@ -10,17 +10,22 @@ import { Tweet } from 'src/app/models/tweet';
 export class LikedtweetsComponent implements OnInit {
 
   likedTweets:Tweet[] = [];
+  cuser:string; 
   //allTweets:Tweet[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.cuser = localStorage.getItem("email")||"";
+  }
 
   ngOnInit(): void {
     this.http.get(`http://localhost:8080/api/v1.0/tweets/`).subscribe(
       (res) => {
         console.log(res);
         for(const index in res){
-          if((res as Tweet[])[+index].like){
-            this.likedTweets.push({...(res as Tweet[])[+index]});
+          if((res as Tweet[])[+index].likes !== null){
+            if((res as Tweet[])[+index].likes.includes(this.cuser)){
+              this.likedTweets.push({...(res as Tweet[])[+index]});
+            }
           }
         }
       }

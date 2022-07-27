@@ -111,5 +111,19 @@ export class LoginServiceService {
 
   }
 
+  updateTweet(t:{tid:string, tweet:string}){
+    const cu = localStorage.getItem('email');
+
+    this.ob = this.http.put(
+      `http://localhost:8080/api/v1.0/tweets/${cu}/update/${t.tid}`,
+      t,
+      {
+        observe: 'response',
+      }
+    );
+    
+    return this.ob;
+
+  }
 
 }

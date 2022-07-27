@@ -46,7 +46,7 @@
             </div>
             <button
               type="submit"
-              [disabled]="!tf.touched || tf.invalid"
+              [disabled]="!tf.dirty || !tf.valid"
             >
               Post
             </button>
@@ -58,13 +58,16 @@
           <div class="col-md-6 mb-3" *ngFor="let t of allTweets">
             <div class="card">
               <div class="card-body">
+                <h6 class="card-subtitle mb-3 text-muted">
+                  {{"@"+t.email.substring(0, t.email.length-10)}}
+                </h6>
                 <div class="card-text">
                   {{t.tweet|shortText}}
                 </div>
               </div>
               <div class="card-footer" style="font-size:smaller">
-                Posted: {{t.created[0]}}-{{t.created[1]}}-{{t.created[2]}}
-                <span class="material-symbols-outlined" [ngClass]="{'active':t.like}" (click)="toggleTweet($event, t.tid)">
+                Posted: {{t.created|date:'dd-MMMM-YYYY HH:mm:ss'}}
+                <span class="material-symbols-outlined" [ngClass]="{'active':check(t.likes)}" (click)="toggleTweet($event, t.tid)">
                   thumb_up_off
                 </span>
               </div>

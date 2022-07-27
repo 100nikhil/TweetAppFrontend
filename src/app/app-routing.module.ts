@@ -9,12 +9,14 @@ import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { MytweetsComponent } from './components/mytweets/mytweets.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
+import { TweetUpdateComponent } from './components/tweet-update/tweet-update.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/mainpage' ,pathMatch:'full'},
   {path:'mainpage', component:MainpageComponent, canActivate:[AuthGuardService]},
   {path:'login', component:LoginComponent, canActivate:[LoginGuardService]},
   {path:'allTweets', component:AlltweetsComponent, canActivate:[AuthGuardService]},
+  {path:'updateTweet/:id', component:TweetUpdateComponent},
   {path:'myTweets', component:MytweetsComponent, canActivate:[AuthGuardService]},
   {path:'likedTweets', component:LikedtweetsComponent, canActivate:[AuthGuardService]},
   {path:'register', component:RegisterComponent},

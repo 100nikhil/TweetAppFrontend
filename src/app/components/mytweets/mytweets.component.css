@@ -12,3 +12,13 @@
 .icon:active{
   transform: scale(0.9);
 }
+.modify{
+  margin-left: 1em;
+}
+.modify .material-symbols-outlined{
+  color:rgb(131, 6, 248);
+}
+.modify .material-symbols-outlined:hover{
+  cursor:pointer;
+  transform: scale(0.9);
+}

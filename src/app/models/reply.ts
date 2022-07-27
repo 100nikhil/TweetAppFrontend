@@ -1,4 +1,4 @@
 export interface Reply {
-  rid:string;
+  email:string;
   reply:string;
 }

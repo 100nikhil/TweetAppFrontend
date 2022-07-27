@@ -52,7 +52,7 @@ export class MainpageComponent implements OnInit {
         for(const index in res){
           this.allUsers.push({...(res as User[])[+index]});
         }
-        //console.log(this.allUsers);
+        console.log(this.allUsers);
         //--------- getting all tweets --------
         for(let u of this.allUsers){
           this.userNames.push(u.firstName);
@@ -80,10 +80,7 @@ export class MainpageComponent implements OnInit {
   }
 
   getCurrent(){
-    console.log(this.current);
-    console.log(this.cuser);
-    // const c = this.allUsers.filter(u => u.email===this.current);
-    // return c[0];
+    return this.current;
   }
 
   onSubmit(){
@@ -106,6 +103,22 @@ export class MainpageComponent implements OnInit {
     );
   }
 
+  check(likes:string[]){
+
+    const cu = this.getCurrent();
+    let f;
+    if(likes){
+      f = likes.find(l => l===cu);
+    }
+
+    if(f){
+      return true;
+    }
+    else{
+      return false;
+    }
+
+  }
 }
 
 

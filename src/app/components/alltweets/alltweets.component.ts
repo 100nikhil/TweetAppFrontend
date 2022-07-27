@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Tweet } from 'src/app/models/tweet';
 
 @Component({
@@ -10,8 +11,9 @@ import { Tweet } from 'src/app/models/tweet';
 export class AlltweetsComponent implements OnInit {
 
   allTweets:Tweet[] = [];
+  cuser?:string = localStorage.getItem("email")||"";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.http.get('http://localhost:8080/api/v1.0/tweets').subscribe(
@@ -22,6 +24,23 @@ export class AlltweetsComponent implements OnInit {
         }
       }
     );
+  }
+
+  check(likes:string[]){
+    
+    let f;
+
+    if(likes){
+      f = likes.find(l => l===this.cuser);
+    }
+
+    if(f){
+      return true;
+    }
+    else{
+      return false;
+    }
+
   }
 
 }

@@ -25,7 +25,7 @@
         <div class="warn" *ngIf="email.touched && email.errors?.['required']">
           Email is required.
         </div>
-        <div class="warn" *ngIf="email.dirty && !email.errors?.['valid']">
+        <div class="warn" *ngIf="email.dirty && !email.valid">
           Please enter a valid email
         </div>
         <div class="mb-3">
