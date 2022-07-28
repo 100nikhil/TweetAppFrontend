@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { ShortTextPipe } from './pipes/short-text.pipe';
 import { TweetUpdateComponent } from './components/tweet-update/tweet-update.component';
+import { ShowReplyComponent } from './components/show-reply/show-reply.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TweetUpdateComponent } from './components/tweet-update/tweet-update.com
     RegisterComponent,
     ShortTextPipe,
     TweetUpdateComponent,
+    ShowReplyComponent,
   ],
   imports: [
     BrowserModule,

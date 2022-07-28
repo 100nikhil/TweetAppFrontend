@@ -1,0 +1,86 @@
+<div class="row d-flex justify-content-center mt-3">
+  <div class="col-md-8 col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-3 text-primary">
+          {{"@"+concernedTweet.email.substring(0, concernedTweet.email.length-10)}}
+        </h6>
+        <div class="card-text">
+          {{concernedTweet.tweet}}
+        </div>
+      </div>
+      <div class="card-footer" style="font-size:smaller">
+        <span class="me-3 text-muted">
+          Posted: {{concernedTweet.created|date:'dd-MMMM-YYYY HH:mm:ss'}}
+        </span>
+        <span class="material-symbols-outlined" [ngClass]="{'active':check(concernedTweet.likes)}">
+          thumb_up_off
+        </span>
+        <span *ngIf="concernedTweet.likes!==null ; else nolike">
+          {{concernedTweet.likes.length}}
+        </span>
+        <ng-template #nolike>
+          0
+        </ng-template>
+        <span class="me-3"></span>
+        <span class="material-symbols-outlined sr">
+          comment
+        </span>
+        <span *ngIf="concernedTweet.replies!==null ; else noreply">
+          {{concernedTweet.replies.length}}
+        </span>
+        <ng-template #noreply>
+          0
+        </ng-template>
+      </div>
+    </div>
+    <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+      <div class="card-body p-4">
+        <form class="form-group" (ngSubmit)="postReply()" #rf="ngForm">
+          <label for="reply" class="form-label">Add Reply</label>
+          <textarea
+            type="textarea"
+            class="form-control mb-3"
+            name="reply"
+            ngModel
+            #reply="ngModel"
+            id="reply"
+            placeholder="Reply something ..."
+            minlength="10"
+            required
+          >
+          </textarea>
+          <div class="warn" *ngIf="reply.touched && reply.errors?.['required']">
+            Reply is required!
+          </div>
+          <div class="warn" *ngIf="reply.dirty && reply.errors?.['minlength']">
+            Enter minimum 10 characters!
+          </div>
+          <button type="submit" [disabled]="!rf.dirty || !rf.valid">
+            Add Reply
+          </button>
+        </form>
+
+        <div class="card mb-4">
+          <div class="card-body" *ngFor="let rep of concernedTweet.replies">
+            <p>{{rep.reply}}</p>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-row align-items-center">
+                <p class="small mb-0 ms-2 text-primary">
+                  {{"@"+rep.email.substring(0, rep.email.length-10)}}
+                </p>
+              </div>
+              <div class="d-flex flex-row align-items-center text-primary">
+                <p class="small mb-0">Upvoted</p>
+                <i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+                <p class="small mb-0">2</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

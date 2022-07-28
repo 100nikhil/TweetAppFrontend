@@ -79,6 +79,16 @@ export class MainpageComponent implements OnInit {
     );
   }
 
+  // fetchAllTweets(){
+  //   this.http.get("http://localhost:8080//api/v1.0/tweets/").subscribe(
+  //     res => {
+  //       for(let index in res){
+  //         this.allTweets.push({...(res as Tweet[])[+index]});
+  //       }
+  //     }
+  //   );
+  // }
+
   getCurrent(){
     return this.current;
   }

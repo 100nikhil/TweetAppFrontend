@@ -58,7 +58,7 @@
           <div class="col-md-6 mb-3" *ngFor="let t of allTweets">
             <div class="card">
               <div class="card-body">
-                <h6 class="card-subtitle mb-3 text-muted">
+                <h6 class="card-subtitle mb-3 text-primary">
                   {{"@"+t.email.substring(0, t.email.length-10)}}
                 </h6>
                 <div class="card-text">
@@ -66,10 +66,18 @@
                 </div>
               </div>
               <div class="card-footer" style="font-size:smaller">
-                Posted: {{t.created|date:'dd-MMMM-YYYY HH:mm:ss'}}
+                <span class="me-3 text-muted">
+                  Posted: {{t.created|date:'dd-MMMM-YYYY HH:mm:ss'}}
+                </span>
                 <span class="material-symbols-outlined" [ngClass]="{'active':check(t.likes)}" (click)="toggleTweet($event, t.tid)">
                   thumb_up_off
                 </span>
+                <span *ngIf="t.likes!==null; else nolike">
+                  {{t.likes.length}}
+                </span>
+                <ng-template #nolike>
+                  0
+                </ng-template>
               </div>
             </div>
           </div>

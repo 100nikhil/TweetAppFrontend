@@ -18,7 +18,7 @@ export class AlltweetsComponent implements OnInit {
   ngOnInit(): void {
     this.http.get('http://localhost:8080/api/v1.0/tweets').subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         for(const index in res){
           this.allTweets.push({...(res as Tweet[])[+index]});
         }
@@ -41,6 +41,15 @@ export class AlltweetsComponent implements OnInit {
       return false;
     }
 
+  }
+
+  // gotoAddReply(tid:string, email:string){
+  //   this.router.navigate(['/addreply', tid, email]);
+  // }
+
+  gotoShowReply(tid:string, email:string){
+    this.router.navigate(['/showReplies', tid, email]);
+    console.log(tid, email);
   }
 
 }
