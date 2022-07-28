@@ -17,9 +17,26 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div class="row" style="padding:1.4em; background-color: azure;">
-        <div class="col-md-3" *ngFor="let u of allUsers;">
-          <div class="p-photo mb-1">{{u.firstName|uppercase}}</div>
+      <div class="row mysearch" style="background-color: azure;">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <!--div class="col-md-8">
+            <input type="search" id="search" name="search" class="form-control" placeholder="Search" />
+          </div>
+          <div class="col-md-4">
+            <button type="button" id="searchButton">search</button>
+          </div-->
+          <form style="display:inline;" (ngSubmit)="onSubmitSearch()" #searchForm="ngForm">
+            <!-- Search box for blogger by Namanyay Goel //-->
+            <input (input)="onSearch()" id="q" [(ngModel)]="searchTerm" #q="ngModel" name="q" size="40" type="text" placeholder="Search"/>
+            <input id="namanyay-search-btn" value="Search" type="submit"/>
+          </form>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-12 p-3" *ngFor="let u of filteredUsers;">
+          <div id="center-search">
+            <a routerLink="/profile" [queryParams]="{username:u.email}" class="text-primary text-center">{{u.email}}</a>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -80,9 +97,6 @@
                 </ng-template>
               </div>
             </div>
-          </div>
-          <div class="col-md-12">
-            <button (click)="getCurrent()">Current user</button>
           </div>
       </div>
     </div>

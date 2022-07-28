@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 prof">
+      <div id="p-head">Profile</div>
+      <div class="p-info">
+        <div class="p-photo">
+          {{ searchedUser?.firstName | uppercase }}
+        </div>
+        <div>
+          Name : {{ searchedUser?.firstName | uppercase }}
+          {{ searchedUser?.lastName | uppercase }}<br />
+          Gender : {{ searchedUser?.gender | uppercase }}<br />
+          email : {{ searchedUser?.email }}<br />
+          D.O.B. : {{ searchedUser?.dob }}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 proff">
+      <div class="row" *ngFor="let t of searchedUser?.tweets">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-3 text-primary">
+                {{ "@" + t.email.substring(0, t.email.length - 10) }}
+              </h6>
+              <div class="card-text">
+                {{t.tweet}}
+              </div>
+            </div>
+            <div class="card-footer" style="font-size: smaller">
+              <span class="me-3 text-muted">
+                Posted: {{ t.created | date: "dd-MMMM-YYYY HH:mm:ss" }}
+              </span>
+              <span
+                class="material-symbols-outlined"
+                [ngClass]="{ active: check(t.likes) }"
+              >
+                thumb_up_off
+              </span>
+              <span *ngIf="t.likes !== null; else nolike">
+                {{ t.likes.length }}
+              </span>
+              <ng-template #nolike> 0 </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

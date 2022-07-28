@@ -1,15 +1,15 @@
-.prof{
-  padding:1.2em;
+.prof {
+  padding: 1.2em;
   font-size: 1.6em;
   font-weight: 500;
   background-color: rgb(54, 54, 54);
   color: rgb(238, 227, 181);
   border: 1px solid #000;
 }
-#p-head{
+#p-head {
   color: #fff;
 }
-.row .prof .p-info{
+.row .prof .p-info {
   background-color: rgb(226, 223, 223);
   border: 1px solid #fff;
   border-radius: 5px;
@@ -17,16 +17,16 @@
   font-size: 1rem;
   color: #000;
 }
-.p-photo{
+.p-photo {
   background-color: chocolate;
   border-radius: 5px;
   color: #fff;
   padding: 1em;
 }
-button:hover{
+button:hover {
   background-color: rgba(0, 0, 0, 0.904);
 }
-button{
+button {
   margin: 0.5em;
   text-decoration: solid;
   color: rgb(238, 227, 181);
@@ -34,20 +34,52 @@ button{
   padding: 0.4em;
   border-radius: 0.5em;
 }
-form{
-  padding:1.5em;
+form {
+  padding: 1.5em;
 }
-.warn{
-  color:#ff0000;
+.warn {
+  color: #ff0000;
 }
-label{
+label {
   font-size: 2em;
   font-weight: 100;
 }
-.active{
+.active {
   color: rgb(4, 62, 255);
 }
-.material-symbols-outlined:hover{
+.material-symbols-outlined:hover {
   color: rgb(4, 62, 255);
-  cursor:pointer;
+  cursor: pointer;
+}
+.mysearch {
+  padding: 2em;
+}
+#namanyay-search-btn {
+  background: #000;
+  color: rgb(238, 227, 181);
+  font: "trebuchet ms", trebuchet;
+  padding: 10px 20px;
+  border-radius: 0 10px 10px 0;
+  -moz-border-radius: 0 10px 10px 0;
+  -webkit-border-radius: 0 10px 10px 0;
+  -o-border-radius: 0 10px 10px 0;
+  border: 0 none;
+  font-weight: bold;
+}
+
+#q {
+  background: #eee;
+  padding: 10px;
+  border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  -webkit-border-radius: 10px 0 0 10px;
+  -o-border-radius: 10px 0 0 10px;
+  border: 0 none;
+  width: 160px;
+}
+
+#center-search{
+  position: relative;
+  width:50%;
+  margin:auto;
 }

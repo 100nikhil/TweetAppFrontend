@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { MytweetsComponent } from './components/mytweets/mytweets.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ShowReplyComponent } from './components/show-reply/show-reply.component';
 import { TweetUpdateComponent } from './components/tweet-update/tweet-update.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'mainpage', component:MainpageComponent, canActivate:[AuthGuardService]},
   {path:'login', component:LoginComponent, canActivate:[LoginGuardService]},
   {path:'allTweets', component:AlltweetsComponent, canActivate:[AuthGuardService]},
+  {path:'profile', component:ProfileComponent},
   {path:'updateTweet/:id', component:TweetUpdateComponent},
   {path:'showReplies/:tid/:tu', component:ShowReplyComponent},
   {path:'myTweets', component:MytweetsComponent, canActivate:[AuthGuardService]},

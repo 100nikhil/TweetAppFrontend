@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Tweet } from 'src/app/models/tweet';
@@ -29,6 +29,10 @@ export class MainpageComponent implements OnInit {
   };
 
   @ViewChild('tf') tweetForm?: NgForm;
+  @ViewChild('searchForm') searchForm?: NgForm;
+
+  filteredUsers?:User[];
+  searchTerm:string = "";
 
   constructor(private http: HttpClient, private ls: LoginServiceService, private router: Router) {
     this.ls.currentUser.subscribe(val => {
@@ -129,6 +133,17 @@ export class MainpageComponent implements OnInit {
     }
 
   }
+
+  onSearch(){
+    console.log(this.searchTerm);
+    this.filteredUsers = this.allUsers.filter(u => u.email.includes(this.searchTerm));
+  }
+
+  onSubmitSearch(){
+    const mySearch = this.searchForm?.value.q;
+    this.filteredUsers = this.allUsers.filter(u => u.email.includes(mySearch));
+  }
+
 }
 
 
